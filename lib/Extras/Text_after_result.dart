@@ -1,9 +1,8 @@
 import 'package:sasy/Extras/Exercise_level.dart'; 
 
-// Gender enum might be defined elsewhere, ensure it's accessible or define it here
 // enum Gender { male, female }
 enum Gender { male, female }
-/// Utility class to compute BMR and TDEE.
+
 class BMICalculator {
   final double height; // Height in meters (will be converted to cm for BMR)
   final double weight; // Weight in kilograms
@@ -11,7 +10,7 @@ class BMICalculator {
   final int age;
   final EXle exerciseLevel; // The EXle object
 
-  ///  new calculator instance with required parameters.
+
   BMICalculator({
     required this.height,
     required this.weight,
@@ -52,7 +51,6 @@ class BMICalculator {
       case 5: // Super Active
         return 1.9;
       default:
-        // Default to Sedentary if level not found (shouldn't happen)
         return 1.2;
     }
   }
@@ -65,7 +63,7 @@ class BMICalculator {
     return bmr * multiplier;
   }
 
-  // Optional: Keep standard BMI calculation if needed elsewhere
+
   double calculateStandardBMI() {
      if (height <= 0) return 0; // Avoid division by zero
      return weight / (height * height);

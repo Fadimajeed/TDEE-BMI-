@@ -22,13 +22,12 @@ class first_UI extends StatelessWidget {
                 "Accurately calculate your Body Mass Index and your daily calories intake. With advice on how to lose weight and maintain a healthy lifestyle. ",
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 100),
               Flexible(
                 child: Image.asset(
                   "lib/Images/Burgers/BMI.png",
                   fit: BoxFit.contain,
                   width: double.infinity,
-                  
                 ),
               ),
               Spacer(),
@@ -53,7 +52,7 @@ class first_UI extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
-      
+
                     Spacer(),
                     Icon(Icons.arrow_forward, color: Colors.white),
                   ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math'; // Import for max function
+import 'dart:math'; 
 
 class BMIPicker extends StatefulWidget {
   final Function(double) onHeightChanged;
@@ -24,8 +24,8 @@ class _BMIPickerState extends State<BMIPicker> {
   late ScrollController _weightController;
   late int _selectedHeightIndex;
   late int _selectedWeightIndex;
-
-  final double _itemExtent = 60.0; // Define item extent as a constant
+ // Define item extent as a constant
+  final double _itemExtent = 60.0;
 
   int _heightToIndex(double height) => ((height - 1.20) * 100 + 5000).round();
   int _weightToIndex(double weight) => (weight - 30 + 3000).round();
@@ -46,40 +46,16 @@ class _BMIPickerState extends State<BMIPicker> {
     _heightController = ScrollController(initialScrollOffset: initialHeightOffset);
     _weightController = ScrollController(initialScrollOffset: initialWeightOffset);
 
-    // Add listeners to update the selection while scrolling is happening (optional, for live update)
-    // _heightController.addListener(_updateHeightSelection);
-    // _weightController.addListener(_updateWeightSelection);
+
   }
 
   @override
   void dispose() {
-    // _heightController.removeListener(_updateHeightSelection);
-    // _weightController.removeListener(_updateWeightSelection);
+
     _heightController.dispose();
     _weightController.dispose();
     super.dispose();
   }
-
-  // Optional: Methods for live update while scrolling
-  // void _updateHeightSelection() {
-  //   final centerOffset = _heightController.offset;
-  //   final index = (centerOffset / _itemExtent).round() + 5000;
-  //   final clampedIndex = index.clamp(5000, 9000);
-  //   if (_selectedHeightIndex != clampedIndex) {
-  //     setState(() => _selectedHeightIndex = clampedIndex);
-  //     widget.onHeightChanged(_height);
-  //   }
-  // }
-
-  // void _updateWeightSelection() {
-  //   final centerOffset = _weightController.offset;
-  //   final index = (centerOffset / _itemExtent).round() + 3000;
-  //   final clampedIndex = index.clamp(3000, 12000);
-  //   if (_selectedWeightIndex != clampedIndex) {
-  //     setState(() => _selectedWeightIndex = clampedIndex);
-  //     widget.onWeightChanged(_weight);
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -103,11 +79,11 @@ class _BMIPickerState extends State<BMIPicker> {
             if (_selectedHeightIndex != index) {
               // Update state immediately when snapping finishes
               setState(() => _selectedHeightIndex = index);
-              widget.onHeightChanged(_height); // Notify parent
+              widget.onHeightChanged(_height); 
             }
           },
         ),
-        SizedBox(height: 20), // Increased spacing
+        SizedBox(height: 20), 
         Text("Weight: ${_weight.toStringAsFixed(1)} kg",
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         SizedBox(height: 8),
@@ -145,7 +121,7 @@ class _BMIPickerState extends State<BMIPicker> {
     final itemCount = maxIndex - minIndex + 1;
 
     return SizedBox(
-      height: 70, // Increased height slightly for indicator
+      height: 70, 
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -179,11 +155,6 @@ class _BMIPickerState extends State<BMIPicker> {
                    }
                 }
               }
-              // Optional: Update selection live while scrolling (can be less performant)
-              // else if (notification is ScrollUpdateNotification) {
-              //    final liveIndex = (controller.offset / _itemExtent).round() + minIndex;
-              //    onItemSelected(liveIndex.clamp(minIndex, maxIndex));
-              // }
               return true;
             },
             child: ListView.builder(
@@ -199,10 +170,10 @@ class _BMIPickerState extends State<BMIPicker> {
           // Static Center Indicator
           Positioned(
             top: 0,
-            bottom: 20, // Position above the text
+            bottom: 20, 
             child: Container(
-              width: 3, // Indicator line width
-              color: Colors.red, // Indicator color
+              width: 3, 
+              color: Colors.red, 
             ),
           ),
           
@@ -212,7 +183,7 @@ class _BMIPickerState extends State<BMIPicker> {
   }
 
   Widget _buildMeasurementItem(String label, bool isSelected) {
-    // Use isSelected passed from itemBuilder to highlight the correct item
+    // isSelected passed from itemBuilder to highlight the correct item
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

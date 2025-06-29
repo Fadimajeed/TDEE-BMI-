@@ -1,9 +1,10 @@
-import 'package:sasy/Extras/Age.dart'; 
+import 'package:sasy/Extras/Age.dart';
 import 'package:sasy/Extras/height_weidth.dart';
 import 'package:sasy/Screens/Resultscreen.dart';
 import 'package:sasy/Extras/Exercise_level.dart';
 import 'package:flutter/material.dart';
-import 'package:sasy/Extras/Text_after_result.dart'; 
+import 'package:sasy/Extras/Text_after_result.dart';
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -22,7 +23,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // Returns the UI content to be placed inside the Scaffold from main.dart
-    return Scaffold(body: SafeArea(child: Padding(padding: const EdgeInsets.all(16.0), child: _UI())),);
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(padding: const EdgeInsets.all(16.0), child: _UI()),
+      ),
+    );
   }
 
   // Builds the main column layout for the screen
@@ -36,11 +41,11 @@ class _MyAppState extends State<MyApp> {
         ),
         const SizedBox(height: 20),
 
-        //  Gender toggle 
+        //  Gender toggle
         _buildGenderToggle(),
         const SizedBox(height: 20),
 
-        //  Age picker 
+        //  Age picker
         const Text(
           "Age",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -57,7 +62,6 @@ class _MyAppState extends State<MyApp> {
         const SizedBox(height: 20),
 
         // --- Height & Weight picker ---
-        // Use the updated BMIPicker with state management and centering
         BMIPicker(
           initialHeight: selectedHeight,
           initialWeight: selectedWeight,
@@ -80,7 +84,7 @@ class _MyAppState extends State<MyApp> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
         const SizedBox(height: 8),
-        // Use the updated ExerciseLevelCard with state management
+
         ExerciseLevelCard(
           selectedLevel: _selectedLevel,
           onChanged: (EXle? newLevel) {
@@ -90,7 +94,7 @@ class _MyAppState extends State<MyApp> {
           },
         ),
 
-        const Spacer(), // Pushes the button to the bottom
+        const Spacer(),
         // --- Calculate button ---
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -127,15 +131,17 @@ class _MyAppState extends State<MyApp> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder:
-                    (_) => FullResult(
-                      bmiValue: bmi, // Pass standard BMI
-                      tdeeValue: tdee, // Pass TDEE
-                    ),
+                builder: (_) => FullResult(
+                  bmiValue: bmi, // Pass standard BMI
+                  tdeeValue: tdee, // Pass TDEE
+                ),
               ),
             );
           },
-          child: const Text("Calculate", style: TextStyle(color: Colors.white),), // Updated button text
+          child: const Text(
+            "Calculate",
+            style: TextStyle(color: Colors.white),
+          ), // Updated button text
         ),
         const SizedBox(height: 10),
       ],
@@ -147,10 +153,10 @@ class _MyAppState extends State<MyApp> {
     return Builder(
       builder: (context) {
         final screenWidth = MediaQuery.of(context).size.width;
-        // Considers the Padding around _UI
-        final outerPadding = 16.0 * 2; 
-        // Padding inside the toggle container
-        final innerPadding = 6.0 * 2; 
+
+        final outerPadding = 16.0 * 2;
+
+        final innerPadding = 6.0 * 2;
         final containerWidth = screenWidth - outerPadding;
         final thumbWidth = (containerWidth - innerPadding) / 2;
 
@@ -171,10 +177,9 @@ class _MyAppState extends State<MyApp> {
             children: [
               // Animated sliding background
               AnimatedAlign(
-                alignment:
-                    selectedGender == Gender.male
-                        ? Alignment.centerLeft
-                        : Alignment.centerRight,
+                alignment: selectedGender == Gender.male
+                    ? Alignment.centerLeft
+                    : Alignment.centerRight,
                 duration: const Duration(milliseconds: 250),
                 curve: Curves.easeInOut,
                 child: Container(
@@ -223,12 +228,11 @@ class _MyAppState extends State<MyApp> {
         behavior: HitTestBehavior.opaque, // Make the whole area tappable
         child: Container(
           width: width,
-          // Center the content (icon + text) vertically
+
           child: Center(
             child: Row(
-              mainAxisAlignment:
-                  MainAxisAlignment.center, // Center horizontally
-              mainAxisSize: MainAxisSize.min, // Take minimum horizontal space
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(icon, color: isSelected ? Colors.white : Colors.black),
                 const SizedBox(width: 8),
@@ -247,4 +251,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sasy/Extras/Bmi_color.dart';
 
-
-// --- Dynamic Advice Generation Function ---
+// --- Dynamic Advice Generation Function (made By AI) ---
 // (Included here for simplicity, consider moving to a helper file)
 String generateDynamicAdvice(double bmiValue, double tdeeValue) {
   String bmiCategory;
@@ -65,7 +64,8 @@ String generateDynamicAdvice(double bmiValue, double tdeeValue) {
   }
 
   // Simplified advice format for display in the app
-  String advice = """
+  String advice =
+      """
 **BMI Status:** $bmiCategory (${bmiValue.toStringAsFixed(1)})
 
 **Weight Goal:** $weightGoalAdvice
@@ -80,7 +80,6 @@ $specificTips
 
   return advice;
 }
-// --- End of Advice Generation Function ---
 
 /// Result screen that shows BMI (with color coding), TDEE, and dynamic advice.
 class FullResult extends StatelessWidget {
@@ -103,13 +102,11 @@ class FullResult extends StatelessWidget {
     final String adviceText = generateDynamicAdvice(bmiValue, tdeeValue);
 
     return Scaffold(
-      // Use SingleChildScrollView to prevent overflow if content is long
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center, // No longer needed with scroll view
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // --- BMI Section ---
@@ -128,7 +125,7 @@ class FullResult extends StatelessWidget {
                     color: bmiColor,
                   ),
                 ),
-                const SizedBox(height: 20), // Spacing after BMI
+                const SizedBox(height: 20),
                 BmiColorBar(),
                 const SizedBox(height: 24),
                 // --- TDEE Section ---
@@ -155,12 +152,12 @@ class FullResult extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 30), // Spacing after TDEE
+                const SizedBox(height: 30),
                 // --- Dynamic Advice Section ---
                 Container(
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade100, // Light background for advice
+                    color: Colors.grey.shade100,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: Colors.grey.shade300),
                   ),
@@ -170,10 +167,10 @@ class FullResult extends StatelessWidget {
                       fontSize: 14,
                       color: Colors.black87,
                       height: 1.4,
-                    ), // Added line height
+                    ),
                   ),
                 ),
-                const SizedBox(height: 30), // Spacing before button
+                const SizedBox(height: 30),
                 // --- Go back button ---
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -194,8 +191,7 @@ class FullResult extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-
-                const SizedBox(height: 10), // Bottom padding
+                const SizedBox(height: 10),
               ],
             ),
           ),
