@@ -68,10 +68,7 @@ lib/
 
 ## State Management
 
-This project primarily utilizes Flutter's built-in **`StatefulWidget`** and **`setState()`** for local state management. The core application state is managed within the `Mainscreen` widget, which then passes data down to child widgets via constructor parameters. Child widgets communicate updates back to their parent using **callback functions**, demonstrating the 
-
-
-common **"Lifting State Up"** pattern. This approach is effective for small to medium-sized applications, providing clear data flow and maintainability without external state management libraries.
+This project primarily utilizes Flutter's built-in **`StatefulWidget`** and **`setState()`** for local state management. The core application state is managed within the `Mainscreen` widget, which then passes data down to child widgets via constructor parameters. Child widgets communicate updates back to their parent using **callback functions**, demonstrating the common **"Lifting State Up"** pattern. providing clear data flow and maintainability without external state management libraries.
 
 ## Screenshots
 
